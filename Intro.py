@@ -8,7 +8,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-color: #B3E5FC; /* Azul claro */
+        background-color: #B3E5FC; /* Fondo azul claro */
     }
     .stButton>button {
         background-color: #0277BD; /* Azul fuerte */
@@ -24,16 +24,20 @@ st.markdown(
         color: #fff;
         transform: scale(1.05);
     }
+    h1, h2, h3, h4, h5, h6, p, div, label, span {
+        color: #002147 !important; /* Azul oscuro */
+    }
     .title {
-        color: #01579B;
+        color: #001F3F;
         text-align: center;
         font-size: 42px;
-        font-weight: 700;
+        font-weight: 800;
     }
     .subtitle {
         text-align: center;
         font-size: 18px;
-        color: #003366;
+        color: #002147;
+        font-weight: 600;
     }
     .block-container {
         padding-top: 2rem;
@@ -95,5 +99,5 @@ for i in range(0, len(apps), 3):
                 st.divider()
 
 # --- 🌈 Final ---
-st.balloons()
+st.snow()
 st.success("✨ ¡Gracias por explorar mi portafolio! 💙🌟🫧💫")
