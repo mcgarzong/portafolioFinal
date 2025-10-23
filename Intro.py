@@ -1,87 +1,99 @@
 import streamlit as st
 from PIL import Image
-st.title("Aplicaciones de Inteligencia Artificial.")
 
+st.set_page_config(page_title="Portafolio Apps IA", page_icon="💌", layout="wide")
+
+# --- 🌊 Estilos personalizados ---
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #B3E5FC; /* Azul claro */
+    }
+    .stButton>button {
+        background-color: #0277BD; /* Azul fuerte */
+        color: white;
+        border-radius: 12px;
+        border: none;
+        font-size: 16px;
+        padding: 0.5em 1em;
+        transition: 0.3s;
+    }
+    .stButton>button:hover {
+        background-color: #03A9F4;
+        color: #fff;
+        transform: scale(1.05);
+    }
+    .title {
+        color: #01579B;
+        text-align: center;
+        font-size: 42px;
+        font-weight: 700;
+    }
+    .subtitle {
+        text-align: center;
+        font-size: 18px;
+        color: #003366;
+    }
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# --- 🌟 Título principal ---
+st.markdown('<div class="title">💫🫧🌟 Portafolio de Aplicaciones con Inteligencia Artificial 🌟🫧💫</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Maria Camila Garzón 💌</div>', unsafe_allow_html=True)
+
+# --- 📚 Sidebar ---
 with st.sidebar:
-  st.subheader("Aplicaciones con Inteligencia Artificial.")
-  parrafo = (
-    "La inteligencia artificial permite mejorar la toma de decisiones con el uso de datos, "
-    "automatizar tareas rutinarias y proporcionar análisis avanzados en tiempo real, lo que "
-    "resulta en una mayor eficiencia y precisión en diversos campos."
-  )
-  st.write(parrafo)
+    st.subheader("📖 Portafolio")
+    st.write("""
+    💭 Este portafolio recopila las aplicaciones creadas durante el curso,
+    explorando el poder de la inteligencia artificial y la creatividad. 🌟🫧
+    """)
 
-url_ia="https://sites.google.com/view/aplicacionesdeia/inicio"
-st.subheader("En el siguiente enlace puedes encontrar páginas y ejercicios prácticos")
-st.write(f"Enlace para páginas y ejercicios: [Enlace]({url_ia})")
-col1, col2, col3 = st.columns(3)
+st.divider()
 
-with col1:
- 
- st.subheader("Conversión de texto a voz")
- image = Image.open('txt_to_audio2.png')
- st.image(image, width=190)
- st.write("En la siguiente enlace usaremos una de las aplicaciones de Inteligencia Artificial") 
- url = "https://imultimod.streamlit.app/"
- st.write(f"Texto a voz: [Enlace]({url})")
+# --- 🧠 Lista de aplicaciones ---
+apps = [
+    (" Introducción", "Presentación general del portafolio.", "1.jpeg", "https://miprimeraappcami.streamlit.app/"),
+    (" Interfaz texto a voz", "cuento", "2.jpeg", "https://laestrellaperdida.streamlit.app/"),
+    (" Interfaz Traductor", "Convierte voz en texto (traductor).", "3.jpeg", "https://traductordecami.streamlit.app/"),
+    (" Interfaz imagen texto", "Reconocimiento de imagenes", "4.jpeg", "https://ocrdecami.streamlit.app/"),
+    (" Análisis de Sentimiento", "Detecta emociones en texto.", "5.jpeg", "https://sentimientotexto.streamlit.app/"),
+    (" Análisis de Texto (Inglés)", "analisis ingles.", "6.jpeg", "https://textoeningles.streamlit.app/"),
+    (" Análisis de Texto (Español)", "Procesamiento de lenguaje natural.", "7.jpeg", "https://textoenespanol.streamlit.app/"),
+    (" Reconocimiento de Objetos", "Detección de objetos en imágenes (YOLO).", "8.jpeg", "https://visordelmundoinvisible.streamlit.app/"),
+    (" Reconocimiento de Gestos", "Interpreta movimientos usando visión computacional.", "9.jpeg", "https://espejopulgar.streamlit.app/"),
+    (" Chatbot (Sistema Experto)", "Sistema de conversación LLM.", "10.jpeg", "https://postresdelimon.streamlit.app/"),
+    (" Interpretación de Imagen", "Análisis avanzado de imágenes con IA.", "11.jpeg", "https://exploradorvisuall.streamlit.app/"),
+    (" Interfaz Táctil", "Tablero interactivo personalizado.", "12.jpeg","https://canvasvivo.streamlit.app/"),
+    (" Generador de Historias", "Crea historias con inteligencia artificial.", "13.jpeg", "https://historiascreativas.streamlit.app/"),
+    (" Control MQTT (Botones)", "Control de dispositivos mediante MQTT y botones.", "14.jpeg", "https://botonexplosivo.streamlit.app/"),
+    (" Control MQTT (Voz)", "Control de dispositivos mediante comandos de voz.", "15.jpeg", "https://vozenescena.streamlit.app/")
+]
 
- st.subheader("Reconocimiento de Objetos")
- image = Image.open('txt_to_audio.png')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos como se detectan objetos en Imágenes.") 
- url = "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
- st.write(f"YOLO: [Enlace]({url})")
+# --- 💫 Diseño con columnas ---
+for i in range(0, len(apps), 3):
+    cols = st.columns(3)
+    for j, col in enumerate(cols):
+        if i + j < len(apps):
+            titulo, desc, img_url, link = apps[i + j]
+            with col:
+                st.image(img_url, use_container_width=True)
+                st.markdown(f"### {titulo}")
+                st.write(desc)
+                if link:
+                    st.markdown(
+                        f'<a href="{link}" target="_blank"><button class="css-1q8dd3e edgvbvh1">💌 Ir a la aplicación</button></a>',
+                        unsafe_allow_html=True
+                    )
+                st.divider()
 
- st.subheader("Entrenando Modelos")
- image = Image.open('OIG5.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos como puedes usar tu modelo entrenado.") 
- url = "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
- st.write(f"YOLO: [Enlace]({url})")
-
-with col2: 
- st.subheader("Conversión de voz a texto")
- image = Image.open('OIG8.jpg')
- st.image(image, width=200)
- st.write("En la siguiente veremos una aplicación que usa la conversión de voz a texto.") 
- url = "https://traductor-ab0sp9f6fi.streamlit.app/"
- st.write(f"Voz a texto: [Enlace]({url})")
-
- st.subheader("Análisis de Datos")
- image = Image.open('data_analisis.png')
- st.image(image, width=190)
- st.write("En la siguiente enlace veremos como se pueden analizar datos usando agentes.") 
- url = "https://asistpy-csv.streamlit.app/"
- st.write(f"Datos: [Enlace]({url})")
-
- st.subheader("Trasnscriptor Audio y Video")
- image = Image.open('OIG3.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos como realizamos transcripciones de audio/video.") 
- url = "https://transcript-whisper.streamlit.app/"
- st.write(f"Transcriptor: [Enlace]({url})")
-
-
-with col3: 
- st.subheader("Generación en Contexto")
- image = Image.open('Chat_pdf.png')
- st.image(image, width=190)
- st.write("En la siguiente veremos una aplicación que usa RAG a partir de un documento (PDF).") 
- url = "https://chatpdf-cc.streamlit.app/"
- st.write(f"RAG: [Enlace]({url})")
-
- st.subheader("Análisis de Imagen")
- image = Image.open('OIG4.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos la capacidad de análisis en Imágenes.") 
- url = "https://vision2-gpt4o.streamlit.app/"
- st.write(f"Vision: [Enlace]({url})")
- 
- st.subheader("Sistema Ciberfísico")
- image = Image.open('OIG6.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos la capacidad de interacción con el mundo físico.") 
- url = "https://vision2-gpt4o.streamlit.app/"
- st.write(f"Vision: [Enlace]({url})")
-
-
+# --- 🌈 Final ---
+st.balloons()
+st.success("✨ ¡Gracias por explorar mi portafolio! 💙🌟🫧💫")
